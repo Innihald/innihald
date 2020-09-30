@@ -8,3 +8,7 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> symfony/framework-bundle ###
+.idea/
+###< symfony/framework-bundle ###
