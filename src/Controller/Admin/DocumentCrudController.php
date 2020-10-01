@@ -21,7 +21,8 @@ class DocumentCrudController extends AbstractCrudController
         return [
             Field::new("title"),
             Field::new("description"),
-            AssociationField::new("ocr")
+            AssociationField::new("ocr"),
+            AssociationField::new("file")
         ];
     }
 }
