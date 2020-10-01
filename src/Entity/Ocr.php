@@ -22,6 +22,12 @@ class Ocr
      */
     private $data;
 
+    public function __toString()
+    {
+        $substring = substr($this->data, 0, 25);
+        return strlen($this->data) > 25 ? $substring . "[...]" : $this->data;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
