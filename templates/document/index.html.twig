@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    <div>There are {{ documents | length }} documents.</div>
+
     {% for document in documents %}
         <h4>{{ document.title }}</h4>
         <h5>{{ document.description }}</h5>
@@ -12,5 +14,12 @@
         <a href="{{ path('document_show', {id: document.id}) }}">Detail</a>
         <hr>
     {% endfor %}
+
+    {% if previous >= 0 %}
+        <a href="{{ path('document', { offset: previous }) }}">Previous</a>
+    {% endif %}
+    {% if next < documents|length %}
+        <a href="{{ path('document', { offset: next }) }}">Next</a>
+    {% endif %}
 
 {% endblock %}

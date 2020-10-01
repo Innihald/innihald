@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Document;
+use App\Repository\DocumentRepository;
 use App\Service\Domain\DocumentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,11 +26,18 @@ class DocumentController extends AbstractController
 
     /**
      * @Route("/document", name="document")
+     * @param Request $request
+     * @return Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $this->documentService->getDocumentPaginator($offset);
+
         return $this->render('document/index.html.twig', [
-            'documents' => $this->documentService->getAllDocuments(),
+            'documents' => $paginator,
+            'previous' => $offset - DocumentRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + DocumentRepository::PAGINATOR_PER_PAGE)
         ]);
     }
 

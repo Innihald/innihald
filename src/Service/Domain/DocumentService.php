@@ -6,6 +6,7 @@ namespace App\Service\Domain;
 
 use App\Entity\Document;
 use App\Repository\DocumentRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class DocumentService
 {
@@ -25,6 +26,11 @@ class DocumentService
     public function getAllDocuments(): array
     {
         return $this->documentRepository->findAll();
+    }
+
+    public function getDocumentPaginator($offset): Paginator
+    {
+        return $this->documentRepository->getDocumentPaginator($offset);
     }
 
     public function getDocumentById(int $id): Document
