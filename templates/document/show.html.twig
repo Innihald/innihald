@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Document {{ document.title }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ document.title }}</h1>
+
+    <p>{{ document.description }}</p>
+
+    <div>
+        <h3>OCR-Data</h3>
+        <p>{{ document.ocr.data }}</p>
+    </div>
+{% endblock %}
