@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %} | Innihald</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %} | Innihald</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<header>
+    <h1><a href="{{ path('homepage') }}">Innihald</a></h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('document') }}">Documents</a>
+        </li>
+        <li>
+            <a href="{{ path('admin') }}">Admin area</a>
+        </li>
+    </ul>
+
+    <hr/>
+</header>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
