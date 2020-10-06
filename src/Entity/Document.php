@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Document
 {
@@ -39,9 +40,36 @@ class Document
      */
     private $file;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $changedAt;
+
     public function __construct()
     {
         $this->file = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist(): void
+    {
+        $this->createdAt = new \DateTime();
+        $this->changedAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(): void
+    {
+        $this->changedAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -112,6 +140,30 @@ class Document
                 $file->setDocument(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getChangedAt(): ?\DateTimeInterface
+    {
+        return $this->changedAt;
+    }
+
+    public function setChangedAt(\DateTimeInterface $changedAt): self
+    {
+        $this->changedAt = $changedAt;
 
         return $this;
     }
