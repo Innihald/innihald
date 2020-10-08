@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\PhysicalFile;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
 class PhysicalFileCrudController extends AbstractCrudController
 {
@@ -12,14 +13,13 @@ class PhysicalFileCrudController extends AbstractCrudController
         return PhysicalFile::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            Field::new("filename"),
+            Field::new("path"),
+            Field::new("type")
         ];
     }
-    */
 }
