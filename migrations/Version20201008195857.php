@@ -22,6 +22,10 @@ final class Version20201008195857 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE ocr ADD created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
         $this->addSql('ALTER TABLE ocr ADD changed_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE physical_file ADD created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE physical_file ADD changed_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE document ADD created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE document ADD changed_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,5 +34,9 @@ final class Version20201008195857 extends AbstractMigration
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE ocr DROP created_at');
         $this->addSql('ALTER TABLE ocr DROP changed_at');
+        $this->addSql('ALTER TABLE physical_file DROP created_at');
+        $this->addSql('ALTER TABLE physical_file DROP changed_at');
+        $this->addSql('ALTER TABLE document DROP created_at');
+        $this->addSql('ALTER TABLE document DROP changed_at');
     }
 }
