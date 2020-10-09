@@ -7,9 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=OcrRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ocr
 {
+    use TimestampTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

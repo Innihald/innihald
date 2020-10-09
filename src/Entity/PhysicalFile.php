@@ -7,9 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PhysicalFileRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class PhysicalFile
 {
+    use TimestampTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

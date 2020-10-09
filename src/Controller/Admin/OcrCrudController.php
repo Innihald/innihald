@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Ocr;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
 class OcrCrudController extends AbstractCrudController
 {
@@ -12,14 +13,11 @@ class OcrCrudController extends AbstractCrudController
         return Ocr::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            Field::new("data")
         ];
     }
-    */
 }
