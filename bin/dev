@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+
+const PODMAN_START = "podman-compose up -d";
+const PODMAN_STOP = "podman-compose down";
+const SYMFONY_START = "symfony server:start -d";
+const SYMFONY_STOP = "symfony server:stop";
+
+echo "\n";
+echo "/--------------------/\n";
+echo "/- Innihald Console -/\n";
+echo "/--------------------/\n";
+echo "\n";
+
+if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
+    echo 'Warning: The dev command should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
+}
+
+set_time_limit(0);
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+if (in_array("server:start", $argv, true)) {
+    echo "Starting Podman container...\n";
+    exec(PODMAN_STOP);
+    exec(PODMAN_START);
+
+    echo "Starting Symfony server...\n";
+    exec(SYMFONY_START);
+}
+
+if (in_array("server:stop", $argv, true)) {
+    echo "Stopping Podman container...\n";
+    exec(PODMAN_STOP);
+
+    echo "Stopping Symfony server...\n";
+    exec(SYMFONY_STOP);
+}
