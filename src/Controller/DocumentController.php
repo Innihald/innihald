@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Document;
+use App\Form\DocumentFormType;
+use App\Form\DocumentUploadFormType;
+use App\Form\FileUploadFormType;
 use App\Repository\DocumentRepository;
 use App\Service\Domain\DocumentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,6 +41,22 @@ class DocumentController extends AbstractController
             'documents' => $paginator,
             'previous' => $offset - DocumentRepository::PAGINATOR_PER_PAGE,
             'next' => min(count($paginator), $offset + DocumentRepository::PAGINATOR_PER_PAGE)
+        ]);
+    }
+
+    /**
+     * @Route("/document/new", name="document_new")
+     * @return Response
+     */
+    public function create(): Response
+    {
+        $document = new Document();
+        $documentForm = $this->createForm(DocumentFormType::class, $document);
+
+        $documentUploadForm = $this->createForm(DocumentUploadFormType::class);
+
+        return $this->render('document/create.html.twig', [
+            'documentupload_form' => $documentUploadForm->createView(),
         ]);
     }
 
