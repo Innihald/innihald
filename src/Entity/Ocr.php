@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OcrRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OcrRepository::class)
@@ -22,6 +23,7 @@ class Ocr
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $data;
 
