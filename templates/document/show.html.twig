@@ -8,8 +8,10 @@
 
     <p>{{ document.description }}</p>
 
+    {% if document.ocr %}
     <div>
         <h3>OCR-Data</h3>
         <p>{{ document.ocr.data }}</p>
     </div>
+    {% endif %}
 {% endblock %}

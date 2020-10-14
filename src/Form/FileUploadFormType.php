@@ -17,6 +17,7 @@ class FileUploadFormType extends AbstractType
         $builder
             ->add('filename', TextType::class, [
                 'required' => false,
+                'empty_data' => "",
                 'constraints' => [
 
                 ]
