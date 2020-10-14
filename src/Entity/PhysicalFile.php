@@ -34,7 +34,7 @@ class PhysicalFile
     private $path;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
      */
     private $type;

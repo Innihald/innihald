@@ -17,17 +17,21 @@ class DocumentService
 
     private DocumentRepository $documentRepository;
 
-    private EntityManager $em;
+    private EntityManagerInterface $em;
+
+    private PhysicalFileService $physicalFileService;
 
     /**
      * DocumentService constructor.
      * @param DocumentRepository $documentRepository
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(DocumentRepository $documentRepository, EntityManagerInterface $entityManager)
+    public function __construct(DocumentRepository $documentRepository, EntityManagerInterface $entityManager, PhysicalFileService $physicalFileService)
     {
         $this->documentRepository = $documentRepository;
         $this->em = $entityManager;
+
+        $this->physicalFileService = $physicalFileService;
     }
 
 
@@ -46,10 +50,15 @@ class DocumentService
         return $this->documentRepository->find($id);
     }
 
-    public function saveDocumentWithFile(Document $document, File $file, string $filename = "default"): Document
+    public function saveDocumentWithFile(Document $document, File $file, string $filename = ""): Document
     {
-        $this->em->persist($document);
+        $filename = $filename !== "" ? $filename : $file->getFilename();
 
+        $physicalFile = $this->physicalFileService->saveFile($file, $filename);
+
+        $document->addFile($physicalFile);
+
+        $this->em->persist($document);
         $this->em->flush();
 
         return $document;
