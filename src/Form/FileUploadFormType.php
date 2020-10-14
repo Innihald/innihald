@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
 
 class FileUploadFormType extends AbstractType
@@ -23,7 +24,7 @@ class FileUploadFormType extends AbstractType
             ->add("file", FileType::class, [
                 'required' => true,
                 'constraints' => [
-                    new Image(['maxSize' => '4098k'])
+                    new File(['maxSize' => '4098k'])
                 ]
             ])
         ;

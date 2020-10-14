@@ -9,6 +9,7 @@ use App\Form\FileUploadFormType;
 use App\Repository\DocumentRepository;
 use App\Service\Domain\DocumentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,14 +47,33 @@ class DocumentController extends AbstractController
 
     /**
      * @Route("/document/new", name="document_new")
+     * @param Request $request
      * @return Response
      */
-    public function create(): Response
+    public function create(Request $request): Response
     {
-        $document = new Document();
-        $documentForm = $this->createForm(DocumentFormType::class, $document);
-
         $documentUploadForm = $this->createForm(DocumentUploadFormType::class);
+
+        $documentUploadForm->handleRequest($request);
+
+        if ($documentUploadForm->isSubmitted() && $documentUploadForm->isValid()) {
+
+            $document = new Document();
+
+            /** @var Form $documentForm */
+            $documentForm = $documentUploadForm["document"];
+            /** @var Form $fileForm */
+            $fileForm = $documentUploadForm["file"];
+
+            $document->setTitle($documentForm["title"]->getData());
+            $document->setDescription($documentForm["description"]->getData());
+
+            $document = $this->documentService->saveDocumentWithFile($document, $fileForm["file"]->getData(), $fileForm["filename"]->getData());
+
+            dump($document);
+
+            return $this->redirectToRoute('document_show', ['id' => $document->getId()]);
+        }
 
         return $this->render('document/create.html.twig', [
             'documentupload_form' => $documentUploadForm->createView(),
