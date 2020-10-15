@@ -62,7 +62,7 @@ class DocumentController extends AbstractController
             $documentForm = $documentUploadForm["document"];
             /** @var Form $fileForm */
             $fileForm = $documentUploadForm["file"];
-            
+
             // create document
             $document = new Document();
             $document->setTitle($documentForm["title"]->getData());
