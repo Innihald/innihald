@@ -44,6 +44,12 @@ class PhysicalFile
      */
     private $document;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $physicalFilename;
+
     public function __toString()
     {
         return $this->filename;
@@ -99,6 +105,18 @@ class PhysicalFile
     public function setDocument(?Document $document): self
     {
         $this->document = $document;
+
+        return $this;
+    }
+
+    public function getPhysicalFilename(): ?string
+    {
+        return $this->physicalFilename;
+    }
+
+    public function setPhysicalFilename(string $physicalFilename): self
+    {
+        $this->physicalFilename = $physicalFilename;
 
         return $this;
     }
