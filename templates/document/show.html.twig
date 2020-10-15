@@ -8,8 +8,30 @@
 
     <p>{{ document.description }}</p>
 
+    {% if document.ocr %}
+        <div>
+            <h3>OCR-Data</h3>
+            <p>{{ document.ocr.data }}</p>
+        </div>
+    {% endif %}
+
+    {% if document.file.count > 0 %}
+        <div>
+            <h3>File details</h3>
+            <div>
+                {% for file in document.file %}
+                    <div>
+                        <strong>Filename:</strong> {{ file.filename }}<br>
+                        <strong>Physical Filename:</strong> {{ file.physicalFilename }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <div>
-        <h3>OCR-Data</h3>
-        <p>{{ document.ocr.data }}</p>
+        <hr>
+        <a href="{{ path('document') }}">Back to overview</a><br>
+        <a href="{{ path('document_new') }}">Upload new document</a>
     </div>
 {% endblock %}

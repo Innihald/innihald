@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PhysicalFileRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PhysicalFileRepository::class)
@@ -22,16 +23,19 @@ class PhysicalFile
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $filename;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $path;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $type;
 
@@ -39,6 +43,12 @@ class PhysicalFile
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="file")
      */
     private $document;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $physicalFilename;
 
     public function __toString()
     {
@@ -95,6 +105,18 @@ class PhysicalFile
     public function setDocument(?Document $document): self
     {
         $this->document = $document;
+
+        return $this;
+    }
+
+    public function getPhysicalFilename(): ?string
+    {
+        return $this->physicalFilename;
+    }
+
+    public function setPhysicalFilename(string $physicalFilename): self
+    {
+        $this->physicalFilename = $physicalFilename;
 
         return $this;
     }

@@ -9,6 +9,8 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> symfony/framework-bundle ###
+###> Innihald ###
 .idea/
-###< symfony/framework-bundle ###
+
+public/uploads
+###< Innihald ###

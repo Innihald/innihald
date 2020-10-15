@@ -4,6 +4,10 @@
 
 {% block body %}
 
+    <div>
+        <a href="{{ path('document_new') }}">Upload new document</a>
+    </div>
+
     <div>There are {{ documents | length }} documents.</div>
 
     {% for document in documents %}
