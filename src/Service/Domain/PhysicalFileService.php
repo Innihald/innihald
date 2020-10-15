@@ -36,10 +36,8 @@ class PhysicalFileService
     public function saveFile(File $file, string $filename): PhysicalFile
     {
         $physicalFile = new PhysicalFile();
-
         $date = new \DateTime();
 
-        //TODO: add a filename and a physicalfilename (name on disk)
         $newFilename = sprintf("%s.%s", $filename, $file->guessExtension());
         $physicalFile->setFilename($newFilename);
 
