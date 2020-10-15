@@ -9,6 +9,7 @@ use App\Repository\PhysicalFileRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\Date;
 
 class PhysicalFileService
 {
@@ -22,6 +23,7 @@ class PhysicalFileService
      * PhysicalFileService constructor.
      * @param PhysicalFileRepository $fileRepository
      * @param EntityManagerInterface $em
+     * @param string $uploadFolder
      */
     public function __construct(PhysicalFileRepository $fileRepository, EntityManagerInterface $em, string $uploadFolder)
     {
@@ -35,14 +37,20 @@ class PhysicalFileService
     {
         $physicalFile = new PhysicalFile();
 
-        //TODO: add timestamp to file
+        $date = new \DateTime();
+
+        //TODO: add a filename and a physicalfilename (name on disk)
         $newFilename = sprintf("%s.%s", $filename, $file->guessExtension());
         $physicalFile->setFilename($newFilename);
+
+        $physicalFilename = sprintf("%s_%s", $date->format("Ymd_His"), $newFilename);
+        $physicalFile->setPhysicalFilename($physicalFilename);
+
         $physicalFile->setPath($this->uploadFolder);
         $physicalFile->setType($file->getMimeType());
 
         try {
-            $file->move($this->uploadFolder, $newFilename);
+            $file->move($this->uploadFolder, $physicalFilename);
 
             $this->em->persist($physicalFile);
             $this->em->flush();
