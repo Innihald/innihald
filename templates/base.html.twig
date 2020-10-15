@@ -16,6 +16,12 @@
         <li>
             <a href="{{ path('admin') }}">Admin area</a>
         </li>
+
+        {% if app.user %}
+            <li>
+                <a href="{{ path('app_logout') }}">Logout</a>
+            </li>
+        {% endif %}
     </ul>
 
     <hr/>

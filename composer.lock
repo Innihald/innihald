@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8c37b953974397cf8ee5f9f77433cf4",
+    "content-hash": "0d75c436a845f69175fdef44fdbbdc77",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -5183,7 +5183,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
