@@ -12,6 +12,7 @@
         <ignoreFiles>
             <directory name="vendor"/>
             <directory name="config"/>
+            <directory name="var"/>
         </ignoreFiles>
     </projectFiles>
     <plugins>
