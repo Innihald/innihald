@@ -10,9 +10,9 @@
         <directory name="src"/>
         <directory name="migrations"/>
         <ignoreFiles>
-            <directory name="vendor"/>
-            <directory name="config"/>
-            <directory name="var"/>
+            <directory name="./vendor"/>
+            <directory name="./config"/>
+            <directory name="./var"/>
         </ignoreFiles>
     </projectFiles>
     <plugins>
