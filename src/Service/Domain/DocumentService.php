@@ -40,11 +40,15 @@ class DocumentService
         return $this->documentRepository->findAll();
     }
 
-    public function getDocumentPaginator($offset): Paginator
+    public function getDocumentPaginator(int $offset): Paginator
     {
         return $this->documentRepository->getDocumentPaginator($offset);
     }
 
+    /**
+     * @param int $id
+     * @return Document|null
+     */
     public function getDocumentById(int $id): Document
     {
         return $this->documentRepository->find($id);
