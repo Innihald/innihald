@@ -1,4 +1,6 @@
 {
+    "name": "Innihald DMS",
+    "description": "A open-source document management system written with Symfony.",
     "type": "project",
     "license": "proprietary",
     "require": {
