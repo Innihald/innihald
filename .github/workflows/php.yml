@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  symfony:
 
     runs-on: ubuntu-latest
 
@@ -29,33 +29,13 @@ jobs:
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
-  
-  check:
-    runs-on: ubuntu-latest
     
-    steps:
-      - uses: actions/checkout@v2
+    - name: Run Psalm
+      run: ./vendor/bin/psalm
+      id: psalm-result
         
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
-          
-      - name: Run Psalm
-        run: ./vendor/bin/psalm
-        id: psalm-result
-        
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #with:
-          # Additional arguments to the sonarcloud scanner
-          # args: # optional
-          # Set the sonar.projectBaseDir analysis property
-          # projectBaseDir: # optional, default is .
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
