@@ -36,3 +36,14 @@ jobs:
     steps:
       - name: psalm
         uses: psalm/psalm-github-actions@1.0.0
+        
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #with:
+          # Additional arguments to the sonarcloud scanner
+          # args: # optional
+          # Set the sonar.projectBaseDir analysis property
+          # projectBaseDir: # optional, default is .
