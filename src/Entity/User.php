@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,7 +18,7 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
@@ -34,6 +35,11 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private string $password;
+
+    /**
+     * @Assert\Length(min=5, max=128)
+     */
+    private ?string $plainPassword = null;
 
     public function __toString()
     {
@@ -112,5 +118,15 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $password): void
+    {
+        $this->plainPassword = $password;
     }
 }
