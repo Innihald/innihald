@@ -49,7 +49,7 @@ class DocumentService
      * @param int $id
      * @return Document|null
      */
-    public function getDocumentById(int $id): Document
+    public function getDocumentById(int $id): ?Document
     {
         return $this->documentRepository->find($id);
     }
