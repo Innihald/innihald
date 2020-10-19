@@ -30,8 +30,10 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
     
-    - name: Run Psalm
-      uses: docker://vimeo/psalm-github-actions
+    - name: PHPStan
+      uses: docker://oskarstark/phpstan-ga
+      with:
+        args: analyse -c phpstan.neon --error-format=github
         
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.4
