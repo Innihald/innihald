@@ -32,14 +32,6 @@ jobs:
     
     - name: Run PHPStan
       run: ./vendor/bin/phpstan analyse -c phpstan.neon --error-format=github
-    
-    - name: PHPStan
-      uses: OskarStark/phpstan-ga@0.12.50
-      env:
-        REQUIRE_DEV: true
-        CHECK_PLATFORM_REQUIREMENTS: false
-      with:
-        args: analyse -c phpstan.neon --error-format=github
         
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.4
