@@ -31,7 +31,10 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
     
     - name: PHPStan
-      uses: docker://oskarstark/phpstan-ga
+      uses: OskarStark/phpstan-ga@0.12.50
+      env:
+        REQUIRE_DEV: true
+        CHECK_PLATFORM_REQUIREMENTS: false
       with:
         args: analyse -c phpstan.neon --error-format=github
         
