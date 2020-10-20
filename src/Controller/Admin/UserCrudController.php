@@ -53,7 +53,6 @@ class UserCrudController extends AbstractCrudController
         parent::updateEntity($entityManager, $entityInstance);
     }
 
-
     /**
      * @required
      * @param UserPasswordEncoderInterface $encoder
@@ -61,12 +60,5 @@ class UserCrudController extends AbstractCrudController
     public function setEncoder(UserPasswordEncoderInterface $encoder): void
     {
         $this->encoder = $encoder;
-    }
-
-    public function updateUserEntity(User $user): void
-    {
-        $this->setUserPlainPassword($user);
-
-        $this->updateEntity($user);
     }
 }

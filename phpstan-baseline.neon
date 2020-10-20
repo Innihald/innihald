@@ -1,0 +1,207 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Controller\\\\Admin\\\\UserCrudController\\:\\:persistEntity\\(\\) has parameter \\$entityInstance with no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Admin/UserCrudController.php
+
+		-
+			message: "#^Method App\\\\Controller\\\\Admin\\\\UserCrudController\\:\\:updateEntity\\(\\) has parameter \\$entityInstance with no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Admin/UserCrudController.php
+
+		-
+			message: "#^Method App\\\\Controller\\\\SecurityController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/SecurityController.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$title has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$description has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$ocr has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$file has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Document\\:\\:getFile\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$createdAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Document\\:\\:\\$changedAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Document.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Ocr\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Ocr.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Ocr\\:\\:\\$data has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Ocr.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Ocr\\:\\:\\$createdAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Ocr.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Ocr\\:\\:\\$changedAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Ocr.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$filename has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$path has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$type has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$document has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$physicalFilename has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$createdAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\PhysicalFile\\:\\:\\$changedAt has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/PhysicalFile.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\User\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\User\\:\\:\\$roles type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\User\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentFormType\\:\\:buildForm\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Form/DocumentFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/DocumentFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentUploadFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/DocumentUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentUploadFormType\\:\\:buildForm\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Form/DocumentUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentUploadFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/DocumentUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\DocumentUploadFormType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/DocumentUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\FileUploadFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/FileUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\FileUploadFormType\\:\\:buildForm\\(\\) has parameter \\$builder with no value type specified in iterable type Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\.$#"
+			count: 1
+			path: src/Form/FileUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\FileUploadFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Form/FileUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\FileUploadFormType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/FileUploadFormType.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\DocumentRepository\\:\\:getDocumentPaginator\\(\\) return type has no value type specified in iterable type Doctrine\\\\ORM\\\\Tools\\\\Pagination\\\\Paginator\\.$#"
+			count: 1
+			path: src/Repository/DocumentRepository.php
+
+		-
+			message: "#^Method App\\\\Security\\\\AppAuthenticator\\:\\:getCredentials\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/AppAuthenticator.php
+
+		-
+			message: "#^Method App\\\\Service\\\\Domain\\\\DocumentService\\:\\:getAllDocuments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/Domain/DocumentService.php
+
+		-
+			message: "#^Method App\\\\Service\\\\Domain\\\\DocumentService\\:\\:getDocumentPaginator\\(\\) return type has no value type specified in iterable type Doctrine\\\\ORM\\\\Tools\\\\Pagination\\\\Paginator\\.$#"
+			count: 1
+			path: src/Service/Domain/DocumentService.php
+
